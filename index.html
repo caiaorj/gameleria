@@ -202,6 +202,12 @@
     </div>
 
     <div class="field">
+      <label for="p-howto">Controles / como se joga</label>
+      <textarea id="p-howto" maxlength="220" placeholder="Ex.: deslize o dedo para mover · toque para pular · junte as estrelas antes do tempo acabar…"></textarea>
+      <p class="hint">Aparece pra quem abrir o jogo, num painel "como se joga". Escreve como quem explica pra um amigo.</p>
+    </div>
+
+    <div class="field">
       <label>Capa</label>
       <div class="cover-picker">
         <div class="cover-preview"><img id="cover-preview" alt="Prévia da capa"></div>
@@ -274,8 +280,10 @@
       <p id="stage-author"></p>
     </div>
     <button class="stage-like" id="stage-like" aria-label="Curtir este jogo">♥ <span id="stage-likes">0</span></button>
+    <button class="icon-btn" id="stage-how" aria-label="Como se joga" aria-expanded="false" title="Como se joga">?</button>
     <button class="icon-btn" id="stage-full" aria-label="Alternar tela cheia" title="Tela cheia">⛶</button>
   </div>
+  <div class="howto-panel" id="howto-panel" hidden></div>
   <div class="stage-body">
     <div class="frame-wrap" id="frame-wrap">
       <iframe id="stage-frame" title="Jogo" sandbox="allow-scripts allow-pointer-lock"></iframe>

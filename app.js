@@ -342,6 +342,12 @@
     save();
     $('#stage-name').textContent = g.title;
     $('#stage-author').textContent = 'por ' + g.author + ' · ' + g.cat;
+    // painel "como se joga"
+    var how = (g.howto || '').trim();
+    $('#stage-how').hidden = !how;
+    $('#stage-how').setAttribute('aria-expanded', 'false');
+    $('#howto-panel').hidden = true;
+    $('#howto-panel').textContent = how;
     syncStageLike();
     $('#stage-frame').srcdoc = g.html;
     $('#stage').classList.add('open');
@@ -377,6 +383,12 @@
     $('#stage-likes').textContent = fmt(metaOf(stageId).likes);
   }
 
+  $('#stage-how').addEventListener('click', function () {
+    var panel = $('#howto-panel');
+    var open = panel.hidden;
+    panel.hidden = !open;
+    this.setAttribute('aria-expanded', String(open));
+  });
   $('#stage-back').addEventListener('click', closeStage);
   $('#stage-like').addEventListener('click', function () { if (stageId) toggleLike(stageId); });
   $('#stage-full').addEventListener('click', function () {
@@ -558,6 +570,7 @@
       author: author.slice(0, 30),
       cat: $('#p-cat').value,
       desc: $('#p-desc').value.trim().slice(0, 160),
+      howto: $('#p-howto').value.trim().slice(0, 220),
       mobile: $('#p-mobile').checked,
       cover: coverImage || autoCover(),
       html: gameHtml,
