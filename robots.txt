@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://caiaorj.github.io/gameleria/sitemap.xml

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — Game Over | Gameleira</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🕹️%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper: oklch(96.5% .025 92);
+  --ink: oklch(26% .06 298);
+  --tomato: oklch(63% .23 29);
+  --amber: oklch(86% .16 86);
+  --lime: oklch(86% .23 132);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100dvh;display:grid;place-items:center;
+  font-family:'Space Grotesk','Segoe UI',sans-serif;
+  color:var(--paper);background:oklch(15% .04 298);
+  padding:24px;
+}
+/* scanlines de tubo de imagem */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg, transparent 0 3px, oklch(0% 0 0 / .14) 3px 4px);
+}
+.screen{
+  position:relative;width:min(640px,100%);
+  text-align:center;padding:clamp(28px,6vw,56px) 24px;
+  border:3px solid var(--paper);border-radius:18px;
+  box-shadow:0 0 0 8px oklch(15% .04 298),0 0 0 11px oklch(60% .1 298 / .35),0 24px 60px oklch(0% 0 0 / .5);
+}
+.coin{
+  margin:0 0 18px;font-weight:700;font-size:.8rem;letter-spacing:.28em;
+  color:var(--amber);animation:blink 1.1s steps(2,jump-none) infinite;
+}
+@keyframes blink{50%{opacity:.15}}
+h1{
+  margin:0;font-family:'Bungee',sans-serif;font-weight:400;
+  font-size:clamp(2.6rem,10vw,5.2rem);line-height:.98;
+  color:var(--tomato);text-shadow:5px 5px 0 oklch(50% .2 29 / .35);
+}
+.num{
+  display:inline-block;margin-top:14px;padding:2px 14px;
+  font-family:'Bungee',sans-serif;font-size:1rem;color:var(--ink);
+  background:var(--lime);border-radius:8px;rotate:-2deg;
+}
+.sub{margin:20px auto 28px;max-width:40ch;color:oklch(85% .03 92);font-size:1.02rem;line-height:1.6}
+.btn{
+  display:inline-block;padding:13px 24px;
+  font-weight:700;font-size:1rem;text-decoration:none;color:var(--ink);
+  background:var(--amber);border:3px solid var(--paper);border-radius:12px;
+  box-shadow:5px 5px 0 oklch(0% 0 0 / .4);
+  transition:transform .13s cubic-bezier(.22,1,.36,1),box-shadow .13s;
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 oklch(0% 0 0 / .4)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 oklch(0% 0 0 / .4)}
+.count{margin:18px 0 0;font-size:.86rem;color:oklch(70% .04 92)}
+.count b{color:var(--amber)}
+@media (prefers-reduced-motion: reduce){
+  .coin{animation:none}
+  .btn{transition:none}
+}
+</style>
+</head>
+<body>
+<main class="screen">
+  <p class="coin">● INSERT COIN ●</p>
+  <h1>GAME<br>OVER</h1>
+  <span class="num">ERRO 404</span>
+  <p class="sub">Essa fase não existe no fliperama.<br>Ou alguém zerou ela e levou o cartucho embora.</p>
+  <a class="btn" id="home" href="./">◀ VOLTAR AO FLIPERAMA</a>
+  <p class="count">continuar em <b id="n">9</b>s…</p>
+</main>
+<script>
+(function () {
+  // descobre a home certa: projeto no GitHub Pages ou servidor local
+  var home = location.hostname === 'caiaorj.github.io'
+    ? location.origin + '/gameleria/'
+    : location.origin + '/';
+  var link = document.getElementById('home');
+  link.href = home;
+
+  var n = 9, el = document.getElementById('n');
+  var t = setInterval(function () {
+    n--;
+    if (n <= 0) { clearInterval(t); location.replace(home); return; }
+    el.textContent = n;
+  }, 1000);
+  link.addEventListener('click', function () { clearInterval(t); });
+})();
+</script>
+</body>
+</html>

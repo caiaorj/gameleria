@@ -24,6 +24,11 @@ E abrir `http://localhost:8080`.
 ├── styles.css    → design system (tokens OKLCH, componentes, responsivo, reduced-motion)
 ├── games.js      → 4 jogos embutidos jogáveis (Cobrinha, Tijolão, Memória, Jokenpô) + capas SVG
 ├── app.js        → estado, grade, busca, publicação, player, interstitial de anúncios
+├── 404.html      → página de erro estilo "GAME OVER" de fliperama
+├── robots.txt    → permissão total para crawlers + caminho do sitemap
+├── sitemap.xml   → mapa do site para o Google
+├── og-image.png  → imagem de compartilhamento (WhatsApp/redes/Google)
+├── apple-touch-icon.png → ícone iOS
 └── DESIGN.md     → brainstorm e design system (princípios aplicados)
 ```
 
