@@ -40,6 +40,7 @@
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🕹️%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -64,8 +65,8 @@
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    <span>PUBLIQUE SEU JOGO EM 1 MINUTO<b>★</b>SEM INSTALAR NADA — É SÓ HTML<b>★</b>CAPA BONITA, JOGO JOGADO<b>★</b>FEITO POR GENTE COMO VOCÊ<b>★</b></span>
-    <span>PUBLIQUE SEU JOGO EM 1 MINUTO<b>★</b>SEM INSTALAR NADA — É SÓ HTML<b>★</b>CAPA BONITA, JOGO JOGADO<b>★</b>FEITO POR GENTE COMO VOCÊ<b>★</b></span>
+    <span>PUBLIQUE SEU JOGO EM 1 MINUTO<b>★</b>SEM INSTALAR NADA — É SÓ HTML<b>★</b>📱 FEITO PRA TOCAR NO CELULAR<b>★</b>CAPA BONITA, JOGO JOGADO<b>★</b>FEITO POR GENTE COMO VOCÊ<b>★</b></span>
+    <span>PUBLIQUE SEU JOGO EM 1 MINUTO<b>★</b>SEM INSTALAR NADA — É SÓ HTML<b>★</b>📱 FEITO PRA TOCAR NO CELULAR<b>★</b>CAPA BONITA, JOGO JOGADO<b>★</b>FEITO POR GENTE COMO VOCÊ<b>★</b></span>
   </div>
 </div>
 
@@ -75,7 +76,7 @@
     <div class="hero-copy">
       <p class="eyebrow">Arcade comunitário de jogos HTML</p>
       <h1>Plante seu jogo,<br>colha <span class="hl hl-pink">milhares de plays</span>.</h1>
-      <p class="hero-sub">O Gameleira é um <b>fliperama de bairro na internet</b>: você envia seu jogo em HTML, monta uma capa caprichada e ele entra na grade pra todo mundo jogar. Sem instalação, sem taxa, sem mistério.</p>
+      <p class="hero-sub">O Gameleira é um <b>fliperama de bairro na internet</b>: você envia seu jogo em HTML, monta uma capa caprichada e ele entra na grade pra todo mundo jogar — <b>liso no celular</b>, sem instalar app, sem taxa, sem mistério.</p>
       <div class="hero-cta">
         <button class="btn btn-primary" data-open-publish>🕹️ Publicar meu jogo</button>
         <a class="btn btn-ghost" href="#catalogo">Explorar a grade ↓</a>
@@ -97,8 +98,11 @@
       <p class="count" id="count" role="status"></p>
     </div>
     <div class="toolbar">
-      <div class="chips" id="chips" aria-label="Filtrar por categoria"></div>
+      <div class="toolbar-left">
+        <div class="chips" id="chips" aria-label="Filtrar por categoria"></div>
+      </div>
       <div class="sort-wrap">
+        <button class="chip" id="filter-mobile" type="button" aria-pressed="false">📱 no celular</button>
         <label for="sort">Ordenar:</label>
         <select id="sort">
           <option value="recentes">Mais recentes</option>
@@ -131,7 +135,7 @@
         <ol class="steps">
           <li>
             <span class="step-num" aria-hidden="true">01</span>
-            <div><h3>Manda o HTML</h3><p>Envie um arquivo .html ou cole o código direto no formulário. Se roda no navegador, entra na grade.</p></div>
+            <div><h3>Manda o HTML</h3><p>Envie um arquivo .html ou cole o código direto no formulário. Se roda no navegador — e melhor ainda no toque do celular — entra na grade.</p></div>
           </li>
           <li>
             <span class="step-num" aria-hidden="true">02</span>
@@ -181,6 +185,15 @@
         <option>Arcade</option><option>Ação</option><option>Puzzle</option>
         <option>Esporte</option><option>Estratégia</option><option>Retrô</option><option>Outros</option>
       </select>
+    </div>
+
+    <div class="field">
+      <label class="check">
+        <input type="checkbox" id="p-mobile" checked>
+        <span class="box" aria-hidden="true"></span>
+        📱 Funciona no celular (controles por toque)
+      </label>
+      <p class="hint">A maioria da galera joga no telefone. Marque só se você testou no toque: eventos de pointer/touch, botões grandes, sem depender de teclado.</p>
     </div>
 
     <div class="field">

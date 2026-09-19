@@ -24,7 +24,7 @@
   /* ---------- estado ---------- */
   var db = load();
   var liked = new Set(db.liked || []);
-  var state = { cat: 'Todos', q: '', sort: 'recentes' };
+  var state = { cat: 'Todos', q: '', sort: 'recentes', mobileOnly: false };
   var stageId = null;
   var publishOpen = false;
 
@@ -156,6 +156,7 @@
       '<button class="cover" data-play="' + g.id + '" aria-label="Jogar ' + esc(g.title) + '">' +
         '<img src="' + g.cover + '" alt="">' +
         '<span class="cat-tag" style="background:' + cat.bg + ';color:' + cat.ink + '">' + esc(g.cat) + '</span>' +
+        (g.mobile === true ? '<span class="mob-tag" title="Funciona no celular">📱</span>' : '') +
         '<span class="play-pill">▶ JOGAR</span>' +
       '</button>' +
       '<div class="meta">' +
@@ -175,6 +176,9 @@
     var list = allGames().filter(function (g) {
       return state.cat === 'Todos' || g.cat === state.cat;
     });
+    if (state.mobileOnly) {
+      list = list.filter(function (g) { return g.mobile !== false; });
+    }
     if (state.q) {
       var q = state.q.toLowerCase();
       list = list.filter(function (g) {
@@ -554,6 +558,7 @@
       author: author.slice(0, 30),
       cat: $('#p-cat').value,
       desc: $('#p-desc').value.trim().slice(0, 160),
+      mobile: $('#p-mobile').checked,
       cover: coverImage || autoCover(),
       html: gameHtml,
       createdAt: Date.now(),
@@ -607,6 +612,12 @@
   });
   $('#sort').addEventListener('change', function (e) {
     state.sort = e.target.value;
+    renderGrid();
+  });
+  $('#filter-mobile').addEventListener('click', function () {
+    state.mobileOnly = !state.mobileOnly;
+    this.classList.toggle('on', state.mobileOnly);
+    this.setAttribute('aria-pressed', String(state.mobileOnly));
     renderGrid();
   });
 

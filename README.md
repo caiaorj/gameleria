@@ -29,8 +29,20 @@ E abrir `http://localhost:8080`.
 ├── sitemap.xml   → mapa do site para o Google
 ├── og-image.png  → imagem de compartilhamento (WhatsApp/redes/Google)
 ├── apple-touch-icon.png → ícone iOS
+├── manifest.json → PWA instalável ("adicionar à tela inicial")
+├── icon-512.png  → ícone do manifest/PWA
 └── DESIGN.md     → brainstorm e design system (princípios aplicados)
 ```
+
+## Mobile-first 
+
+O foco do Gameleira é quem joga no celular:
+
+- Jogos embutidos com controles de toque (deslizar na Cobrinha, arrastar no Tijolão, toque nos demais)
+- Selo **📱** na capa + filtro **"no celular"** na grade
+- No formulário de publicação, o criador marca se o jogo funciona no toque
+- PWA instalável (`manifest.json`): "adicionar à tela inicial" vira um app
+- Alvos de toque ≥ 44px, safe-area do iPhone, sem zoom de double-tap
 
 ## Como publicar um jogo
 

@@ -1,0 +1,26 @@
+{
+  "name": "Gameleira — fliperama de jogos HTML",
+  "short_name": "Gameleira",
+  "description": "Jogue de graça no fliperama da comunidade e publique seu próprio jogo HTML. Feito pra tocar no celular.",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f0e2",
+  "theme_color": "#e04832",
+  "icons": [
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

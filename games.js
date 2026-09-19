@@ -421,7 +421,8 @@ var BUILTIN_GAMES = [
     cover: COVER_COBRINHA,
     html: GAME_COBRINHA,
     createdAt: Date.UTC(2026, 8, 8),
-    builtin: true
+    builtin: true,
+    mobile: true
   },
   {
     id: 'g-tijolao',
@@ -432,7 +433,8 @@ var BUILTIN_GAMES = [
     cover: COVER_TIJOLAO,
     html: GAME_TIJOLAO,
     createdAt: Date.UTC(2026, 8, 11),
-    builtin: true
+    builtin: true,
+    mobile: true
   },
   {
     id: 'g-memoria',
@@ -443,7 +445,8 @@ var BUILTIN_GAMES = [
     cover: COVER_MEMORIA,
     html: GAME_MEMORIA,
     createdAt: Date.UTC(2026, 8, 14),
-    builtin: true
+    builtin: true,
+    mobile: true
   },
   {
     id: 'g-jokenpo',
@@ -454,6 +457,7 @@ var BUILTIN_GAMES = [
     cover: COVER_JOKENPO,
     html: GAME_JOKENPO,
     createdAt: Date.UTC(2026, 8, 16),
-    builtin: true
+    builtin: true,
+    mobile: true
   }
 ];
