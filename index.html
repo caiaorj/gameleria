@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gameleira — o fliperama da comunidade</title>
+<meta name="description" content="Publique seu jogo HTML, capriche na capa e deixe todo mundo jogar. Um arcade comunitário, grátis e sem instalação.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🕹️%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body id="topo">
+<a class="skip-link" href="#grade">Pular para a grade de jogos</a>
+
+<header class="topbar">
+  <a class="logo" href="#topo" aria-label="Gameleira — início">
+    <span class="logo-badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h4M8 10v4"/><circle cx="15.5" cy="11" r="1.3" fill="currentColor" stroke="none"/><circle cx="17.7" cy="13.8" r="1.3" fill="currentColor" stroke="none"/><path d="M7 7h10a4.5 4.5 0 0 1 4.4 5.6l-.8 3.2a2.8 2.8 0 0 1-5 1L14.5 15h-5l-1.1 1.8a2.8 2.8 0 0 1-5-1l-.8-3.2A4.5 4.5 0 0 1 7 7Z"/></svg>
+    </span>
+    GAMELEIRA
+  </a>
+  <div class="search">
+    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+    <input id="q" type="search" placeholder="Buscar jogo, pessoa ou categoria…" aria-label="Buscar jogos">
+  </div>
+  <button class="btn btn-primary" data-open-publish>+ Publicar jogo</button>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>PUBLIQUE SEU JOGO EM 1 MINUTO<b>★</b>SEM INSTALAR NADA — É SÓ HTML<b>★</b>CAPA BONITA, JOGO JOGADO<b>★</b>FEITO POR GENTE COMO VOCÊ<b>★</b></span>
+    <span>PUBLIQUE SEU JOGO EM 1 MINUTO<b>★</b>SEM INSTALAR NADA — É SÓ HTML<b>★</b>CAPA BONITA, JOGO JOGADO<b>★</b>FEITO POR GENTE COMO VOCÊ<b>★</b></span>
+  </div>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Arcade comunitário de jogos HTML</p>
+      <h1>Plante seu jogo,<br>colha <span class="hl hl-pink">milhares de plays</span>.</h1>
+      <p class="hero-sub">O Gameleira é um <b>fliperama de bairro na internet</b>: você envia seu jogo em HTML, monta uma capa caprichada e ele entra na grade pra todo mundo jogar. Sem instalação, sem taxa, sem mistério.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" data-open-publish>🕹️ Publicar meu jogo</button>
+        <a class="btn btn-ghost" href="#catalogo">Explorar a grade ↓</a>
+      </div>
+      <p class="hero-live"><span class="dot" aria-hidden="true"></span><b id="stat-games">0</b> jogos no ar · <b id="stat-plays">0</b> partidas · <b id="stat-likes">0</b> curtidas</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="sticker">100%<br>GRÁTIS</div>
+      <div class="float-card fc-1"><img id="art-1" alt=""></div>
+      <div class="float-card fc-2"><img id="art-2" alt=""></div>
+      <div class="float-card fc-3"><img id="art-3" alt=""></div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO -->
+  <section class="catalog" id="catalogo">
+    <div class="catalog-head">
+      <h2 class="section-title">A grade de jogos <span class="squig">↓</span></h2>
+      <p class="count" id="count" role="status"></p>
+    </div>
+    <div class="toolbar">
+      <div class="chips" id="chips" aria-label="Filtrar por categoria"></div>
+      <div class="sort-wrap">
+        <label for="sort">Ordenar:</label>
+        <select id="sort">
+          <option value="recentes">Mais recentes</option>
+          <option value="plays">Mais jogados</option>
+          <option value="likes">Mais curtidos</option>
+          <option value="az">A → Z</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid" id="grade"></div>
+
+    <div class="empty" id="empty" hidden>
+      <span class="big" aria-hidden="true">🕹️</span>
+      <h3>Nenhum jogo por aqui… ainda!</h3>
+      <p>Essa grade está esperando o primeiro exemplar. Pode ser o seu.</p>
+      <button class="btn btn-primary" data-open-publish>Publicar o primeiro jogo</button>
+    </div>
+  </section>
+
+  <!-- COMO PUBLICAR -->
+  <section class="how">
+    <div class="how-inner">
+      <div>
+        <h2 class="section-title">Como colocar seu jogo na grade</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-num" aria-hidden="true">01</span>
+            <div><h3>Manda o HTML</h3><p>Envie um arquivo .html ou cole o código direto no formulário. Se roda no navegador, entra na grade.</p></div>
+          </li>
+          <li>
+            <span class="step-num" aria-hidden="true">02</span>
+            <div><h3>Capricha na capa</h3><p>Suba uma imagem sua ou deixe a gente gerar uma capa automática com emoji e título.</p></div>
+          </li>
+          <li>
+            <span class="step-num" aria-hidden="true">03</span>
+            <div><h3>Solta na grade</h3><p>Seu jogo entra no ar na hora. Compartilhe, cole os plays e as curtidas.</p></div>
+          </li>
+        </ol>
+      </div>
+      <button class="btn btn-lime how-cta" data-open-publish>Começar agora →</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div><b>GAMELEIRA</b> 🌱 — o fliperama comunitário de jogos HTML.</div>
+  <div>Seus jogos ficam salvos neste navegador. Feito com café e fichas infinitas.</div>
+</footer>
+
+<!-- OVERLAY COMPARTILHADO -->
+<div class="overlay" id="overlay"></div>
+
+<!-- DRAWER: PUBLICAR JOGO -->
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+  <div class="drawer-head">
+    <h2 id="drawer-title">Publicar jogo</h2>
+    <button class="icon-btn" data-close-publish aria-label="Fechar formulário">✕</button>
+  </div>
+  <form id="pub-form" novalidate>
+    <div class="field" id="f-title">
+      <label for="p-title">Título do jogo <span class="req" aria-hidden="true">*</span></label>
+      <input type="text" id="p-title" maxlength="40" placeholder="Ex.: Cobrinha Espacial" autocomplete="off">
+      <p class="err">Dá um nome pro seu jogo (pelo menos 2 letras).</p>
+    </div>
+
+    <div class="field" id="f-author">
+      <label for="p-author">Seu nome ou estúdio <span class="req" aria-hidden="true">*</span></label>
+      <input type="text" id="p-author" maxlength="30" placeholder="Quem fez essa maravilha?" autocomplete="off">
+      <p class="err">Conta pra galera quem fez.</p>
+    </div>
+
+    <div class="field">
+      <label for="p-cat">Categoria</label>
+      <select id="p-cat">
+        <option>Arcade</option><option>Ação</option><option>Puzzle</option>
+        <option>Esporte</option><option>Estratégia</option><option>Retrô</option><option>Outros</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="p-desc">Descrição</label>
+      <textarea id="p-desc" maxlength="160" placeholder="Uma frase que vende o peixe do seu jogo."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Capa</label>
+      <div class="cover-picker">
+        <div class="cover-preview"><img id="cover-preview" alt="Prévia da capa"></div>
+        <div class="cover-opts">
+          <div class="mini-row">
+            <button type="button" class="mini-btn" id="btn-cover-upload">📁 Enviar imagem</button>
+            <button type="button" class="mini-btn" id="btn-cover-auto">✨ Capa automática</button>
+          </div>
+          <input type="file" id="p-cover-file" accept="image/*" hidden>
+          <p class="hint" id="cover-mode-hint">Sem imagem? A capa sai automática, com emoji e título:</p>
+          <div class="emoji-row" id="emoji-row" aria-label="Escolher emoji da capa automática"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field" id="f-game">
+      <label>O jogo <span class="req" aria-hidden="true">*</span></label>
+      <div class="seg" id="src-seg" role="tablist" aria-label="Como enviar o jogo">
+        <button type="button" data-src="file" class="on">📄 Arquivo .html</button>
+        <button type="button" data-src="code">⌨️ Colar código</button>
+      </div>
+      <div class="src-panel" id="src-file">
+        <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Enviar arquivo do jogo: arraste aqui ou pressione Enter para escolher">
+          <p class="dz-text">🎮 Arraste seu arquivo aqui<br>ou clique para escolher</p>
+          <p class="fname" id="fname"></p>
+        </div>
+        <input type="file" id="p-game-file" accept=".html,.htm,text/html" hidden>
+        <p class="hint">Um único arquivo .html com tudo dentro (CSS e JS inline). Até 3 MB.</p>
+      </div>
+      <div class="src-panel" id="src-code" hidden>
+        <textarea id="p-code" class="code" spellcheck="false" placeholder="Cole aqui o HTML completo do jogo…"></textarea>
+      </div>
+      <p class="err" id="err-game">O jogo é a estrela: envia o arquivo ou cola o código.</p>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">🚀 Colocar na grade</button>
+    <p class="hint center">Publicando, você confirma que o jogo é criação sua. Ele fica salvo neste navegador.</p>
+  </form>
+</aside>
+
+<!-- INTERSTITIAL: anúncio entre a grade e o jogo -->
+<div class="interstitial" id="interstitial" role="dialog" aria-modal="true" aria-label="Anúncio antes do jogo">
+  <div class="ads-panel">
+    <p class="ads-label">Publicidade · é assim que o fliperama se mantém 🕹️</p>
+    <div class="ads-slot" id="ads-slot">
+      <!-- ══════════════════════════════════════════════════════════════
+           💰 COLE AQUI O CÓDIGO DA SUA REDE DE ANÚNCIOS
+           (Adsterra, PropellerAds, GameDistribution, AdSense…)
+           Enquanto não houver código, aparece o placeholder abaixo.
+           ══════════════════════════════════════════════════════════════ -->
+      <div class="ads-placeholder" aria-hidden="true">
+        <span class="ads-ph-big">SEU ANÚNCIO AQUI</span>
+        <span class="ads-ph-small">cole o código da rede de ads no lugar deste bloco</span>
+      </div>
+    </div>
+    <div class="ads-timer" aria-hidden="true"><i id="ads-timer-bar"></i></div>
+  </div>
+  <div class="interstitial-foot">
+    <p id="ads-countdown" aria-live="polite">Seu jogo abre em 5 segundos</p>
+    <button class="btn btn-primary" id="ads-skip" disabled>Aguarde 5s…</button>
+  </div>
+</div>
+
+<!-- STAGE: JOGADOR EM TELA CHEIA -->
+<div class="stage" id="stage" role="dialog" aria-modal="true" aria-label="Jogo em execução">
+  <div class="stage-bar">
+    <button class="icon-btn" id="stage-back" aria-label="Voltar para a grade">←</button>
+    <div class="stage-title">
+      <h3 id="stage-name"></h3>
+      <p id="stage-author"></p>
+    </div>
+    <button class="stage-like" id="stage-like" aria-label="Curtir este jogo">♥ <span id="stage-likes">0</span></button>
+    <button class="icon-btn" id="stage-full" aria-label="Alternar tela cheia" title="Tela cheia">⛶</button>
+  </div>
+  <div class="stage-body">
+    <div class="frame-wrap" id="frame-wrap">
+      <iframe id="stage-frame" title="Jogo" sandbox="allow-scripts allow-pointer-lock"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="games.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
